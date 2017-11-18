@@ -9,16 +9,7 @@ namespace ELM_SET09102
     {
         private string twit_id;
         private string twit_body;
-        private DateTime sir_d;
-
-        public DateTime Sir_d
-        {
-            get { return sir_d; }
-            set
-            {
-               sir_d = value;
-            }
-        }
+        
         public string Twit_body
         {
             get { return twit_body; }

@@ -1,4 +1,4 @@
-<Window x:Class="ELM_SET09102.MainWindow"
+﻿<Window x:Class="ELM_SET09102.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -22,13 +22,13 @@
             <ComboBoxItem Content="SI Report"/>
         </ComboBox>
         <Label x:Name="lbl_standard" Content="Write standard email" HorizontalAlignment="Left" Margin="214,18,0,0" VerticalAlignment="Top" Grid.Column="2" Height="26" Width="120" Visibility="Hidden"/>
-        <Label x:Name="lbl_email_from_email" Content="Email" HorizontalAlignment="Right" Margin="0,165,40,0" VerticalAlignment="Top" Width="49" Height="32" FontFamily="Source Sans Pro Semibold" FontStyle="Italic" Visibility="Hidden"/>
-        <TextBox x:Name="txtBox_sender_email" HorizontalAlignment="Left" Height="42" Margin="74,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="3" Visibility="Hidden"/>
-        <Label x:Name="lbl_subj" Content="Subject" HorizontalAlignment="Right" Margin="0,221,40,0" VerticalAlignment="Top" Width="49" Height="38" FontFamily="Source Sans Pro Semibold" FontStyle="Italic" Visibility="Hidden"/>
-        <TextBox x:Name="txtBox_subj" HorizontalAlignment="Left" Height="39" Margin="74,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="3" Visibility="Hidden"/>
-        <Label x:Name="lbl_body" Content="Text" HorizontalAlignment="Right" Margin="0,275,40,0" VerticalAlignment="Top" Width="49" Height="36" FontFamily="Source Sans Pro Semibold" FontStyle="Italic" Visibility="Hidden"/>
+        <Label x:Name="lbl_email_from_email" Content="Email" HorizontalAlignment="Right" Margin="0,165,40,0" VerticalAlignment="Top" Width="49" Height="32" FontFamily="Source Sans Pro Semibold" FontStyle="Italic"/>
+        <TextBox x:Name="txtBox_sender_email" HorizontalAlignment="Left" Height="42" Margin="74,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="3"/>
+        <Label x:Name="lbl_subj" Content="Subject" HorizontalAlignment="Right" Margin="0,221,40,0" VerticalAlignment="Top" Width="49" Height="38" FontFamily="Source Sans Pro Semibold" FontStyle="Italic"/>
+        <TextBox x:Name="txtBox_subj" HorizontalAlignment="Left" Height="39" Margin="74,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="3"/>
+        <Label x:Name="lbl_body" Content="Text" HorizontalAlignment="Right" Margin="0,275,40,0" VerticalAlignment="Top" Width="49" Height="36" FontFamily="Source Sans Pro Semibold" FontStyle="Italic"/>
         <TextBox x:Name="txtBox_body" HorizontalAlignment="Left" Height="122" Margin="74,276,0,-48" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" AcceptsReturn="True"
-  VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="3" Visibility="Hidden"/>
+  VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="3"/>
         <Button x:Name="btn_send" Content="Send" Grid.Column="2" HorizontalAlignment="Left" Margin="633,426,0,-113" VerticalAlignment="Top" Width="82" Click="btn_send_Click" Height="37" RenderTransformOrigin="0.497,1.04"/>
         <Label x:Name="lbl_sir" Content="Significant Incident Report" HorizontalAlignment="Left" Margin="64,93,0,0" VerticalAlignment="Top" Width="152" Height="26" Grid.ColumnSpan="3" Visibility="Hidden"/>
         <Label x:Name="lbl_sc_code" Content="Sport Centre Code and date" HorizontalAlignment="Left" Margin="52,124,0,0" VerticalAlignment="Top" Width="164" Height="26" Grid.ColumnSpan="3" Visibility="Hidden"/>
@@ -53,17 +53,17 @@
         <TextBox x:Name="txtBox_sms_body" Grid.Column="2" HorizontalAlignment="Left" Height="122" Margin="163,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" AcceptsReturn="True"
   VerticalScrollBarVisibility="Visible" Visibility="Hidden"/>
         <Label x:Name="lbl_sms_body" Content="Body" Grid.Column="2" HorizontalAlignment="Left" Margin="101,165,0,0" VerticalAlignment="Top" Width="57" Height="32" FontFamily="Source Sans Pro Semibold" FontSize="16" FontStyle="Italic" Visibility="Hidden"/>
-        <Label x:Name="lbl_twit_ID" Content="Twitter ID" Grid.Column="2" HorizontalAlignment="Left" Margin="370,108,0,0" VerticalAlignment="Top" Width="62" Height="26" FontFamily="Source Sans Pro Semibold" FontSize="16" FontStyle="Italic" Visibility="Hidden"/>
-        <Label x:Name="lbl_twit_body" Content="Body" Grid.Column="2" HorizontalAlignment="Left" Margin="377,174,0,0" VerticalAlignment="Top" Width="55" Height="33" FontFamily="Source Sans Pro Semibold" FontSize="16" FontStyle="Italic" Visibility="Hidden"/>
-        <TextBox x:Name="txtBox_twit_ID" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="437,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Visibility="Hidden"/>
-        <TextBox x:Name="txtBox_twit_body" Grid.Column="2" HorizontalAlignment="Left" Height="119" Margin="437,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Visibility="Hidden"/>
-        <Label x:Name="lbl_email_from_name" Content="Name" HorizontalAlignment="Right" Margin="0,108,40,0" VerticalAlignment="Top" Width="49" Height="26" FontFamily="Source Sans Pro Semibold" FontStyle="Italic" Visibility="Hidden"/>
-        <TextBox x:Name="txtBox_sender_email_name" HorizontalAlignment="Left" Height="42" Margin="75,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="3" Visibility="Hidden"/>
+        <Label x:Name="lbl_twit_ID" Content="Twitter ID" Grid.Column="2" HorizontalAlignment="Left" Margin="370,108,0,0" VerticalAlignment="Top" Width="62" Height="26" FontFamily="Source Sans Pro Semibold" FontSize="16" FontStyle="Italic"/>
+        <Label x:Name="lbl_twit_body" Content="Body" Grid.Column="2" HorizontalAlignment="Left" Margin="377,174,0,0" VerticalAlignment="Top" Width="55" Height="33" FontFamily="Source Sans Pro Semibold" FontSize="16" FontStyle="Italic"/>
+        <TextBox x:Name="txtBox_twit_ID" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="437,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171"/>
+        <TextBox x:Name="txtBox_twit_body" Grid.Column="2" HorizontalAlignment="Left" Height="119" Margin="437,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
+        <Label x:Name="lbl_email_from_name" Content="Name" HorizontalAlignment="Right" Margin="0,108,40,0" VerticalAlignment="Top" Width="49" Height="26" FontFamily="Source Sans Pro Semibold" FontStyle="Italic"/>
+        <TextBox x:Name="txtBox_sender_email_name" HorizontalAlignment="Left" Height="42" Margin="75,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="3"/>
         <Button x:Name="btn_inc" Content="Add Incident" Grid.Column="1" HorizontalAlignment="Left" Margin="0,295,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Visibility="Hidden"/>
-        <Button x:Name="btn_stand_email" Content="Done1" HorizontalAlignment="Left" Height="24" Margin="74,425,0,-99" VerticalAlignment="Top" Width="83" Grid.ColumnSpan="2"/>
-        <Button x:Name="btn_send_sir" Content="Done2" HorizontalAlignment="Left" Height="23" Margin="74,454,0,-127" VerticalAlignment="Top" Width="82" Grid.ColumnSpan="2"/>
-        <Button x:Name="btn_sms_send" Content="Done" HorizontalAlignment="Left" Margin="163,421,0,-99" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.373,1.1" Height="28" Grid.Column="2"/>
-        <Button x:Name="btn_twit_send" Content="Done" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="439,421,0,-99" VerticalAlignment="Top" Width="82"/>
+        <Button x:Name="btn_stand_email" Content="Done1" HorizontalAlignment="Left" Height="24" Margin="74,425,0,-99" VerticalAlignment="Top" Width="83" Grid.ColumnSpan="2" Click="btn_stand_email_Click"/>
+        <Button x:Name="btn_send_sir" Content="Done2" HorizontalAlignment="Left" Height="23" Margin="74,454,0,-127" VerticalAlignment="Top" Width="82" Grid.ColumnSpan="2" Click="btn_send_sir_Click"/>
+        <Button x:Name="btn_sms_send" Content="Done" HorizontalAlignment="Left" Margin="163,421,0,-99" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.373,1.1" Height="28" Grid.Column="2" Click="btn_sms_send_Click"/>
+        <Button x:Name="btn_twit_send" Content="Done" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="439,421,0,-99" VerticalAlignment="Top" Width="82" Click="btn_twit_send_Click"/>
         <Button x:Name="btn_standard_clear" Content="Clear1" HorizontalAlignment="Right" Margin="0,425,647,-99" Width="83" Click="btn_standard_clear_Click" Grid.ColumnSpan="2" Grid.Column="1"/>
         <Button x:Name="btn_sms_clear" Content="Clear" HorizontalAlignment="Left" Height="28" Margin="252,421,0,-99" VerticalAlignment="Top" Width="82" Grid.Column="2" Click="btn_sms_clear_Click"/>
         <Button x:Name="btn_twit_clear" Content="Clear" HorizontalAlignment="Left" Height="28" Margin="526,421,0,-99" VerticalAlignment="Top" Width="82" Grid.Column="2" Click="btn_twit_clear_Click"/>

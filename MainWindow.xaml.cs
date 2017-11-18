@@ -51,28 +51,17 @@ namespace ELM_SET09102
         private void btn_send_Click(object sender, RoutedEventArgs e)
         {
             //Validation
-            try
-            {
-                em.Subj = txtBox_subj.Text;
-                twit.Sir_d = (DateTime)date_sir.SelectedDate;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+         //   cnt.Save_sir();
         }
 
         private void btn_sms_Click(object sender, RoutedEventArgs e)
         {
-            cnt.Show_sms();
-            
+            cnt.Show_sms();  
         }
 
         private void btn_twitter_Click(object sender, RoutedEventArgs e)
         {
-            cnt.Show_twit();
-            
+            cnt.Show_twit();    
         }
 
         private void cbox_incident_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -100,6 +89,26 @@ namespace ELM_SET09102
         private void btn_twit_clear_Click(object sender, RoutedEventArgs e)
         {
             cnt.Clear_twit();
+        }
+
+        private void btn_twit_send_Click(object sender, RoutedEventArgs e)
+        {
+                cnt.Save_twit();
+        }
+
+        private void btn_sms_send_Click(object sender, RoutedEventArgs e)
+        {
+            cnt.Save_sms();
+        }
+
+        private void btn_stand_email_Click(object sender, RoutedEventArgs e)
+        {
+            cnt.Save_standard_email();
+        }
+
+        private void btn_send_sir_Click(object sender, RoutedEventArgs e)
+        {
+            cnt.Save_sir();
         }
     }
 }
