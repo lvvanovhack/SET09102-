@@ -13,6 +13,16 @@ namespace ELM_SET09102
         private string p_name;
         private string p_email;
         private string sir_code;
+        private DateTime sir_d;
+
+        public DateTime Sir_d
+        {
+            get { return sir_d; }
+            set
+            {
+                sir_d = value;
+            }
+        }
 
         public string P_name
         {
