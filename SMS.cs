@@ -9,6 +9,16 @@ namespace ELM_SET09102
     {
         private string mob_no;
         private string sms_body;
+        private string abbr;
+        public string Abbr
+        {
+            get { return abbr; }
+            set
+            {
+                abbr = value;
+            }
+        }
+
         public string Mob_no
         {
             get { return mob_no; }
@@ -16,9 +26,9 @@ namespace ELM_SET09102
             {
                 if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("Must not be empty");
-                else if (!System.Text.RegularExpressions.Regex.IsMatch(value, "^[a-zA-Z]"))
-                    throw new ArgumentException("Accepts only alphabetical characters!");
-                else if(mob_no.Length>10)
+            //    else if (!System.Text.RegularExpressions.Regex.IsMatch(value, "^[a-zA-Z]"))
+            //        throw new ArgumentException("Accepts only alphabetical characters!");
+                else if(value.Length>10)
                     throw new ArgumentException("Invalid Mobile Number");
                 mob_no = value;
             }

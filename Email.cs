@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Collections;
 
 namespace ELM_SET09102
@@ -9,22 +6,27 @@ namespace ELM_SET09102
     public class Email
     {
         private string subj;
-        private string email_body;
+        public string email_body;
         private string p_name;
         private string p_email;
         private string sir_code;
         private DateTime sir_d;
-        private ArrayList arrBody;
-
-        public ArrayList Arr_Body
+        private string abbr;
+   //     private ArrayList myArr;
+        public string Abbr
         {
-            get { return arrBody; }
+            get { return abbr; }
             set
             {
-                arrBody = value;
+                abbr = value;
             }
         }
 
+     /*   public ArrayList MyArr
+        {
+            get { return myArr; }
+            set { myArr = value; }
+        } */
         public DateTime Sir_d
         {
             get { return sir_d; }

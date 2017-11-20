@@ -17,8 +17,6 @@ namespace ELM_SET09102
             InitializeComponent();        
         }
 
-        
-        
         private void btn_email_Click(object sender, RoutedEventArgs e)
         {
                 cbox_email.Visibility = Visibility.Visible;
@@ -27,14 +25,9 @@ namespace ELM_SET09102
         private void cbox_email_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int selectedIndex = cbox_email.SelectedIndex;
-         //   Object selectedItem = cbox_email.SelectedItem;
             
             if (selectedIndex == 0)
-            {
                 cnt.Show_email0();
-             //   btn_standard_clear.Visibility = Visibility.Visible;
-             //   cbox_email.Visibility = Visibility.Hidden;
-            }
 
             if (selectedIndex == 1)
             {
@@ -43,12 +36,7 @@ namespace ELM_SET09102
             } 
 
             if (selectedIndex == 2)
-            {
                 cnt.Show_email2();
-             //   btn_sir_clear.Visibility = Visibility.Visible;
-               // cbox_email.Visibility = Visibility.Hidden;
-            }
-
         }
 
         private void btn_send_Click(object sender, RoutedEventArgs e)
@@ -68,7 +56,6 @@ namespace ELM_SET09102
 
         private void cbox_incident_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
          em.Incident = cbox_incident.SelectedValue.ToString();
          MessageBox.Show(em.Incident);
         }
@@ -95,7 +82,7 @@ namespace ELM_SET09102
 
         private void btn_twit_send_Click(object sender, RoutedEventArgs e)
         {
-                cnt.Save_twit();
+             cnt.Save_twit();
         }
 
         private void btn_sms_send_Click(object sender, RoutedEventArgs e)
@@ -105,7 +92,7 @@ namespace ELM_SET09102
 
         private void btn_stand_email_Click(object sender, RoutedEventArgs e)
         {
-            cnt.Save_standard_email();
+                cnt.Save_standard_email();
         }
 
         private void btn_send_sir_Click(object sender, RoutedEventArgs e)

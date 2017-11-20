@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
+using Newtonsoft.Json;
 
 namespace ELM_SET09102
 {
+
     public class Container
     {
         Twitter twit = new Twitter();
         SMS sms = new SMS();
         Email em = new Email();
-        string myKey;
-        
+    //    List<string> myL = new List<String>();
+
+      
+
+
         static Dictionary<String, String> LoadFromFile(String csvFile)
         {
             var dictionary = new Dictionary<String, String>();
@@ -35,21 +37,41 @@ namespace ELM_SET09102
             foreach (var word in words)
             {
                 if (dictionary[word] != null)
-                {
-                    s.Append(String.Format("{0} " , dictionary[word]));
-                }
+                    s.Append(String.Format("{0} <{1}> ", word, dictionary[word]));
                 else
-                {
-                    s.Append(word + " ");
-                }
+                    s.Append(word + " ");     
             }
             return s.ToString().TrimEnd(' ');
         }
-        public void replace()
+        public void Replace_sms()
         {
-            var dictionary = LoadFromFile(@"D:\textwords.csv");
+            var dictionary = LoadFromFile(@"G:\textwords.csv");
             foreach (Window window in Application.Current.Windows)
             {
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    foreach (string key in dictionary.Keys)
+                    {
+                        var message = key;
+                        if ((window as MainWindow).txtBox_sms_body.Text.Contains(key))
+                        {
+                            message = ReplaceMessage(message, dictionary);
+                            sms.Abbr = message;
+                        }
+                    }
+                }
+            }
+            //   myL.ToString();
+            string content = JsonConvert.SerializeObject(sms);
+            //         SaveFileDialog sfd = new SaveFileDialog();
+            File.WriteAllText(@"G:\ELMsms.json", content);
+        }
+        public void Replace_s_email()
+        {
+            var dictionary = LoadFromFile(@"G:\textwords.csv");
+            foreach (Window window in Application.Current.Windows)
+            {
+
                 if (window.GetType() == typeof(MainWindow))
                 {
                     foreach(string key in dictionary.Keys)
@@ -58,13 +80,16 @@ namespace ELM_SET09102
                         if ((window as MainWindow).txtBox_body.Text.Contains(key))
                         {
                           message = ReplaceMessage(message,dictionary);
+                            em.Abbr = message;
                         }
-                    }
+                    }     
                 }
             }
+            //   myL.ToString();
+            string content = JsonConvert.SerializeObject(em);
+   //         SaveFileDialog sfd = new SaveFileDialog();
+            File.WriteAllText(@"G:\ELM.json", content);
         } 
-         
-        //MVVM , x:FieldModifier="public"
 
    
         public void Show_email0()
@@ -231,6 +256,7 @@ namespace ELM_SET09102
                     }
                 }
             }
+           
         }
         public void Save_sms()
         {
@@ -250,6 +276,7 @@ namespace ELM_SET09102
                     }
                 }
             }
+            Replace_sms();
         }
         public void Save_standard_email()
         {
@@ -272,7 +299,7 @@ namespace ELM_SET09102
                     }
                 }
             }
-            replace();
+            Replace_s_email();  
         }
 
         public void Save_sir()
