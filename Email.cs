@@ -14,6 +14,16 @@ namespace ELM_SET09102
         private string p_email;
         private string sir_code;
         private DateTime sir_d;
+        private ArrayList arrBody;
+
+        public ArrayList Arr_Body
+        {
+            get { return arrBody; }
+            set
+            {
+                arrBody = value;
+            }
+        }
 
         public DateTime Sir_d
         {

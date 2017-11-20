@@ -61,13 +61,13 @@
         <TextBox x:Name="txtBox_sender_email_name" HorizontalAlignment="Left" Height="42" Margin="75,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Grid.ColumnSpan="3"/>
         <Button x:Name="btn_inc" Content="Add Incident" Grid.Column="1" HorizontalAlignment="Left" Margin="0,295,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Visibility="Hidden"/>
         <Button x:Name="btn_send_email" Content="Save" HorizontalAlignment="Left" Height="24" Margin="74,425,0,-99" VerticalAlignment="Top" Width="83" Grid.ColumnSpan="2" Click="btn_stand_email_Click" Visibility="Hidden"/>
-        <Button x:Name="btn_send_sir" Content="Done2" HorizontalAlignment="Left" Height="23" Margin="74,454,0,-127" VerticalAlignment="Top" Width="82" Grid.ColumnSpan="2" Click="btn_send_sir_Click"/>
-        <Button x:Name="btn_sms_send" Content="Done" HorizontalAlignment="Left" Margin="163,421,0,-99" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.373,1.1" Height="28" Grid.Column="2" Click="btn_sms_send_Click"/>
-        <Button x:Name="btn_twit_send" Content="Done" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="439,421,0,-99" VerticalAlignment="Top" Width="82" Click="btn_twit_send_Click"/>
-        <Button x:Name="btn_standard_clear" Content="Clear1" HorizontalAlignment="Right" Margin="0,425,647,-99" Width="83" Click="btn_standard_clear_Click" Grid.ColumnSpan="2" Grid.Column="1"/>
-        <Button x:Name="btn_sms_clear" Content="Clear" HorizontalAlignment="Left" Height="28" Margin="252,421,0,-99" VerticalAlignment="Top" Width="82" Grid.Column="2" Click="btn_sms_clear_Click"/>
-        <Button x:Name="btn_twit_clear" Content="Clear" HorizontalAlignment="Left" Height="28" Margin="526,421,0,-99" VerticalAlignment="Top" Width="82" Grid.Column="2" Click="btn_twit_clear_Click"/>
-        <Button x:Name="btn_sir_clear" Content="Clear2" HorizontalAlignment="Left" Height="23" Margin="64,454,0,-127" VerticalAlignment="Top" Width="83" Grid.Column="1" Click="btn_sir_clear_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="btn_send_sir" Content="Save sir" HorizontalAlignment="Left" Height="23" Margin="74,454,0,-127" VerticalAlignment="Top" Width="82" Grid.ColumnSpan="2" Click="btn_send_sir_Click" Visibility="Hidden"/>
+        <Button x:Name="btn_sms_send" Content="Save sms" HorizontalAlignment="Left" Margin="163,421,0,-99" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.373,1.1" Height="28" Grid.Column="2" Click="btn_sms_send_Click" Visibility="Hidden"/>
+        <Button x:Name="btn_twit_send" Content="Save twit" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="439,421,0,-99" VerticalAlignment="Top" Width="82" Click="btn_twit_send_Click" Visibility="Hidden"/>
+        <Button x:Name="btn_standard_clear" Content="Clear email" HorizontalAlignment="Right" Margin="0,425,647,-99" Width="83" Click="btn_standard_clear_Click" Grid.ColumnSpan="2" Grid.Column="1" Visibility="Hidden"/>
+        <Button x:Name="btn_sms_clear" Content="Clear sms" HorizontalAlignment="Left" Height="28" Margin="252,421,0,-99" VerticalAlignment="Top" Width="82" Grid.Column="2" Click="btn_sms_clear_Click" Visibility="Hidden"/>
+        <Button x:Name="btn_twit_clear" Content="Clear Twit" HorizontalAlignment="Left" Height="28" Margin="526,421,0,-99" VerticalAlignment="Top" Width="82" Grid.Column="2" Click="btn_twit_clear_Click" Visibility="Hidden"/>
+        <Button x:Name="btn_sir_clear" Content="Clear sir" HorizontalAlignment="Left" Height="23" Margin="64,454,0,-127" VerticalAlignment="Top" Width="83" Grid.Column="1" Click="btn_sir_clear_Click" Grid.ColumnSpan="2" Visibility="Hidden"/>
         <Button x:Name="btn_exit" Content="Send" Grid.Column="2" HorizontalAlignment="Left" Margin="636,421,0,-108" VerticalAlignment="Top" Width="82" Click="btn_exit_Click" Height="37" RenderTransformOrigin="0.497,1.04"/>
 
     </Grid>

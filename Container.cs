@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -12,8 +14,59 @@ namespace ELM_SET09102
         Twitter twit = new Twitter();
         SMS sms = new SMS();
         Email em = new Email();
+        string myKey;
+        
+        static Dictionary<String, String> LoadFromFile(String csvFile)
+        {
+            var dictionary = new Dictionary<String, String>();
+            var lines = File.ReadAllLines(csvFile);
+            foreach (var line in lines)
+            {
+                var fields = line.Split(',', '\r', '\n');
+                dictionary[fields[0].Trim()] = fields[1].Trim();
+            }
+            return dictionary;
+        }
 
+        static String ReplaceMessage(String message, Dictionary<String, String> dictionary)
+        {
+            var words = message.Split(' ', ',');
+            var s = new StringBuilder();
+            foreach (var word in words)
+            {
+                if (dictionary[word] != null)
+                {
+                    s.Append(String.Format("{0} " , dictionary[word]));
+                }
+                else
+                {
+                    s.Append(word + " ");
+                }
+            }
+            return s.ToString().TrimEnd(' ');
+        }
+        public void replace()
+        {
+            var dictionary = LoadFromFile(@"D:\textwords.csv");
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    foreach(string key in dictionary.Keys)
+                    {
+                        var message = key;
+                        if ((window as MainWindow).txtBox_body.Text.Contains(key))
+                        {
+                          message = ReplaceMessage(message,dictionary);
+                        }
+                    }
+                }
+            }
+        } 
+         
         //MVVM , x:FieldModifier="public"
+
+   
         public void Show_email0()
         {
             foreach (Window window in Application.Current.Windows)
@@ -30,6 +83,7 @@ namespace ELM_SET09102
                     (window as MainWindow).txtBox_sender_email.Visibility = Visibility.Visible;
                     (window as MainWindow).txtBox_subj.Visibility = Visibility.Visible;
                     (window as MainWindow).txtBox_body.Visibility = Visibility.Visible;
+                    (window as MainWindow).btn_send_email.Visibility = Visibility.Visible;
                     (window as MainWindow).btn_standard_clear.Visibility = Visibility.Visible;
                     (window as MainWindow).cbox_email.Visibility = Visibility.Hidden;
                 }
@@ -50,6 +104,7 @@ namespace ELM_SET09102
                     (window as MainWindow).lbl_incident.Visibility = Visibility.Visible;
                     (window as MainWindow).cbox_incident.Visibility = Visibility.Visible;
                     (window as MainWindow).btn_inc.Visibility = Visibility.Visible;
+                    (window as MainWindow).btn_send_sir.Visibility = Visibility.Visible;
                     (window as MainWindow).btn_sir_clear.Visibility = Visibility.Visible;
                     (window as MainWindow).cbox_email.Visibility = Visibility.Hidden;
                 }
@@ -198,6 +253,7 @@ namespace ELM_SET09102
         }
         public void Save_standard_email()
         {
+            
             foreach (Window window in Application.Current.Windows)
             {
                 if (window.GetType() == typeof(MainWindow))
@@ -216,16 +272,18 @@ namespace ELM_SET09102
                     }
                 }
             }
+            replace();
         }
 
         public void Save_sir()
         {
+            
             foreach (Window window in Application.Current.Windows)
             {
                 if (window.GetType() == typeof(MainWindow))
                 {
                     try
-                    {
+                    {            
                         em.Sir_code = (window as MainWindow).txtBox_sir_code.Text;
                         em.Incident = (window as MainWindow).cbox_incident.SelectedValue.ToString();
                         em.Sir_d = (DateTime)(window as MainWindow).date_sir.SelectedDate;

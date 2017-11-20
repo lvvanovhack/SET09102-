@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.IO;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace ELM_SET09102
 {
@@ -8,20 +11,17 @@ namespace ELM_SET09102
     {
         Email em = new Email();
         Twitter twit = new Twitter();
-        Container cnt=new Container();
+        Container cnt= new Container();
         public MainWindow()
         {
-            InitializeComponent(); 
+            InitializeComponent();        
         }
+
+        
+        
         private void btn_email_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (cbox_email.Visibility == Visibility.Hidden)
                 cbox_email.Visibility = Visibility.Visible;
-
-            if (btn_send_email.Visibility == Visibility.Hidden)
-                btn_send_email.Visibility = Visibility.Visible;
-
         }
         
         private void cbox_email_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -53,8 +53,7 @@ namespace ELM_SET09102
 
         private void btn_send_Click(object sender, RoutedEventArgs e)
         {
-            //Validation
-         //   cnt.Save_sir();
+            
         }
 
         private void btn_sms_Click(object sender, RoutedEventArgs e)
