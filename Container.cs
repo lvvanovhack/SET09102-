@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace ELM_SET09102
 {
@@ -86,6 +87,15 @@ namespace ELM_SET09102
                 }
             }
             //   myL.ToString();
+            string textT = em.email_body;
+            string koza = textT.Substring(textT.IndexOf(em.Abbr) + 5);
+            string right = "putka";
+            if(koza==right)
+            {
+                MessageBox.Show("Success");
+            }
+            string s = em.Email_body.Substring(em.Email_body.IndexOf(em.Abbr)+3);
+            MessageBox.Show(s);
             string content = JsonConvert.SerializeObject(em);
    //         SaveFileDialog sfd = new SaveFileDialog();
             File.WriteAllText(@"G:\ELM.json", content);
@@ -299,6 +309,10 @@ namespace ELM_SET09102
                     }
                 }
             }
+            
+            
+
+            //        string[] a = s.Select(c => c.ToString()).ToArray();
             Replace_s_email();  
         }
 
