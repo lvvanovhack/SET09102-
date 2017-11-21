@@ -80,14 +80,16 @@ namespace ELM_SET09102
                         var message = key;
                         if ((window as MainWindow).txtBox_body.Text.Contains(key))
                         {
-                          message = ReplaceMessage(message,dictionary);
+                            string textT = em.email_body;
+                            string koza = textT.Substring(textT.IndexOf(message) + message.Length+1);
+                             message = ReplaceMessage(message,dictionary);
                             em.Abbr = message;
                         }
                     }     
                 }
             }
             //   myL.ToString();
-            string textT = em.email_body;
+       /*     string textT = em.email_body;
             string koza = textT.Substring(textT.IndexOf(em.Abbr) + 5);
             string right = "putka";
             if(koza==right)
@@ -96,6 +98,7 @@ namespace ELM_SET09102
             }
             string s = em.Email_body.Substring(em.Email_body.IndexOf(em.Abbr)+3);
             MessageBox.Show(s);
+            */
             string content = JsonConvert.SerializeObject(em);
    //         SaveFileDialog sfd = new SaveFileDialog();
             File.WriteAllText(@"G:\ELM.json", content);
