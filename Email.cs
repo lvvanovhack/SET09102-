@@ -3,6 +3,12 @@ using System.Collections;
 
 namespace ELM_SET09102
 {
+    /* Twitter Class containing 2 types. Standard Email and Incident Reports (SIR),
+     * A Standard Email needs: Name, Subject, Personal Email, Body and Abbr.
+     * SIR reports include SIR Code and A Date. Incident is at checkbox
+     * selectedItem property.
+     * Last Edited by N. Ivanov on 24.11.2017
+     */
     public class Email
     {
         private string subj;
@@ -12,7 +18,7 @@ namespace ELM_SET09102
         private string sir_code;
         private DateTime sir_d;
         private string abbr;
-   //     private ArrayList myArr;
+        //Same logic as before
         public string Abbr
         {
             get { return abbr; }
@@ -21,12 +27,7 @@ namespace ELM_SET09102
                 abbr = value;
             }
         }
-
-     /*   public ArrayList MyArr
-        {
-            get { return myArr; }
-            set { myArr = value; }
-        } */
+        //Date is stored as dd/MM/yyyy
         public DateTime Sir_d
         {
             get { return sir_d; }
@@ -35,7 +36,7 @@ namespace ELM_SET09102
                 sir_d = value;
             }
         }
-
+        //Person's name (Sender Name). Not empty.
         public string P_name
         {
             get { return p_name; }
@@ -46,6 +47,7 @@ namespace ELM_SET09102
                 p_name = value;
             }
         }
+        //Personal Email. Not Empty.
         public string P_email
         {
             get { return p_email; }
@@ -56,6 +58,7 @@ namespace ELM_SET09102
                 p_email = value;
             }
         }
+        //The Email Subject should not exceed 20 Chars or be empty.
         public string Subj
         {
             get { return subj; }         
@@ -68,6 +71,7 @@ namespace ELM_SET09102
                 subj = value;   
             }
         }
+        //Email Body can't exceed 140 characters.
         public string Email_body
         {
             get { return email_body; }
@@ -80,8 +84,9 @@ namespace ELM_SET09102
                 email_body = value;
             }
         }
+        //Property of the incident/reason.
         public string Incident { get; set; }
-
+        //SIR code 
         public string Sir_code
         {
             get { return sir_code; }
@@ -94,19 +99,7 @@ namespace ELM_SET09102
                 sir_code = value;
             }
         }
-        /*
-            inci.Add("Theft of Properties");
-            inci.Add("Staff Attack");
-            inci.Add("Device Damage");
-            inci.Add("Raid");
-            inci.Add("Customer Attack");
-            inci.Add("Staff Abuse");
-            inci.Add("Bomb Threat");
-            inci.Add("Terrorism");
-            inci.Add("Suspicious Incident");
-            inci.Add("Sport Injury");
-            inci.Add("Personal Info Leak");
-        */
+ 
     }
 
         

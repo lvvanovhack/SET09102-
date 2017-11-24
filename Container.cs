@@ -4,21 +4,32 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using Newtonsoft.Json;
-using System.Linq;
+using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace ELM_SET09102
 {
-
+    /*
+     * Container Pattern handling all the back-end of this project.
+     * Last Edited by N. Ivanov on 24.11.2017
+     */
     public class Container
     {
+        //Making Objects
         Twitter twit = new Twitter();
         SMS sms = new SMS();
         Email em = new Email();
-    //    List<string> myL = new List<String>();
-
-      
-
-
+        //That is the list of words used as a hashtag. 
+        ArrayList Mentions;
+        //Abbreviation lists used to elaborate the meaning of all 
+        //the abbreviations in their full meaning, being taken from CSV file. 
+        public ArrayList Full_abbr = new ArrayList();
+        public ArrayList Final_abbr = new ArrayList();
+        /*Dictionary taking 2 arguments used in LoadFromFile method taking
+         *the csvfile params. This basically adds items on either {0} or {1}
+         * position of the Dictionary depending on Key/Values from a CSV file.
+         * First column Abbr is taken as a key and the full explanation as a value.
+         */
         static Dictionary<String, String> LoadFromFile(String csvFile)
         {
             var dictionary = new Dictionary<String, String>();
@@ -30,7 +41,8 @@ namespace ELM_SET09102
             }
             return dictionary;
         }
-
+        //The replaced value from the CSV file is kept in this string.
+        //The method itself explains the logic before.
         static String ReplaceMessage(String message, Dictionary<String, String> dictionary)
         {
             var words = message.Split(' ', ',');
@@ -44,6 +56,13 @@ namespace ELM_SET09102
             }
             return s.ToString().TrimEnd(' ');
         }
+        /*Method called upon Saving an SMS.
+         *1.Loads the file calling the Load()
+         * 2.Key is kept in message which is then used
+         * to replace an ABBR with the exact pattern as in eg. AFK <Away From Keyboard>
+         * 3.Our new value is added to the full_abbr list.
+         * 4.Whole SMS object is written to ELMsms.json file.
+         */
         public void Replace_sms()
         {
             var dictionary = LoadFromFile(@"G:\textwords.csv");
@@ -58,14 +77,40 @@ namespace ELM_SET09102
                         {
                             message = ReplaceMessage(message, dictionary);
                             sms.Abbr = message;
+                            Full_abbr.Add(sms.Abbr);
+                            sms.Abbr_list = Full_abbr;
                         }
+                       
                     }
                 }
             }
-            //   myL.ToString();
             string content = JsonConvert.SerializeObject(sms);
-            //         SaveFileDialog sfd = new SaveFileDialog();
             File.WriteAllText(@"G:\ELMsms.json", content);
+        }
+        //Same logic implemented in sms but for a Twitter object.
+        public void Replace_twit()
+        {
+            var dictionary = LoadFromFile(@"G:\textwords.csv");
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    foreach (string key in dictionary.Keys)
+                    {
+                        var message = key;
+                        if ((window as MainWindow).txtBox_twit_body.Text.Contains(key))
+                        {
+                            message = ReplaceMessage(message, dictionary);
+                            twit.Abbr = message;
+                            Final_abbr.Add(twit.Abbr);
+                            twit.Abbr_list = Final_abbr;
+                        }
+
+                    }
+                }
+            }
+            string content = JsonConvert.SerializeObject(twit);
+            File.WriteAllText(@"G:\ELMtwit.json", content);
         }
         public void Replace_s_email()
         {
@@ -82,29 +127,18 @@ namespace ELM_SET09102
                         {
                             string textT = em.email_body;
                             string koza = textT.Substring(textT.IndexOf(message) + message.Length+1);
+
                              message = ReplaceMessage(message,dictionary);
-                            em.Abbr = message;
+                            em.Abbr = Full_abbr.ToString();
                         }
                     }     
                 }
             }
-            //   myL.ToString();
-       /*     string textT = em.email_body;
-            string koza = textT.Substring(textT.IndexOf(em.Abbr) + 5);
-            string right = "putka";
-            if(koza==right)
-            {
-                MessageBox.Show("Success");
-            }
-            string s = em.Email_body.Substring(em.Email_body.IndexOf(em.Abbr)+3);
-            MessageBox.Show(s);
-            */
             string content = JsonConvert.SerializeObject(em);
-   //         SaveFileDialog sfd = new SaveFileDialog();
             File.WriteAllText(@"G:\ELM.json", content);
         } 
 
-   
+       //Shows visibility of GUI
         public void Show_email0()
         {
             foreach (Window window in Application.Current.Windows)
@@ -127,7 +161,7 @@ namespace ELM_SET09102
                 }
             }
         }
-
+        //Shows visibility of GUI
         public void Show_email2()
         { 
          foreach (Window window in Application.Current.Windows)
@@ -148,7 +182,7 @@ namespace ELM_SET09102
                 }
             }
         }
-
+        //Shows visibility of GUI
         public void Show_sms()
         {
             foreach (Window window in Application.Current.Windows)
@@ -164,7 +198,7 @@ namespace ELM_SET09102
                 }
             }
         }
-
+        //Shows visibility of GUI
         public void Show_twit()
         {
             foreach (Window window in Application.Current.Windows)
@@ -180,7 +214,7 @@ namespace ELM_SET09102
                 }
             }
         }
-
+        //Hides content from GUI
         public void Clear_standard()
         {
             foreach (Window window in Application.Current.Windows)
@@ -201,7 +235,7 @@ namespace ELM_SET09102
                 }
             }
         }
-
+        //Hides content from GUI
         public void Clear_sir()
         {
             foreach (Window window in Application.Current.Windows)
@@ -220,7 +254,7 @@ namespace ELM_SET09102
                 }
             }
         }
-
+        //Hides content from GUI
         public void Clear_sms()
         {
             foreach (Window window in Application.Current.Windows)
@@ -250,7 +284,27 @@ namespace ELM_SET09102
                 }
             }
         }
+        /* Metho dgetting a hashtag word in a Twitter Body.
+         * Expressions via Regex are used as for getting the word after 
+         * a hashtag '#' , Each mach is added to a Mentions list representing
+         * and counting people's interests.
+         */
         
+        public void Get_hashtag()
+        {
+             Mentions = new ArrayList();
+            string hash = twit.Twit_id;
+            string text = twit.Twit_body;
+            var regex = new Regex(@"(?<=#)\w+");
+            var matches = regex.Matches(text);
+
+            foreach (Match m in matches)
+            {
+                Mentions.Add("ID: " + hash + " " + "Hashtag words #" + m);
+            }
+
+        }
+        //Assigning Twitter Properties to their input values. Calling methods.
         public void Save_twit()
         {
             foreach (Window window in Application.Current.Windows)
@@ -268,9 +322,11 @@ namespace ELM_SET09102
                         MessageBox.Show(ex.Message);
                     }
                 }
+                Get_hashtag();
+                Replace_twit();
             }
-           
         }
+        //Assigning SMS Properties to their input values. Calling methods.
         public void Save_sms()
         {
             foreach (Window window in Application.Current.Windows)
@@ -290,7 +346,10 @@ namespace ELM_SET09102
                 }
             }
             Replace_sms();
+            
         }
+        //Assigning Standard Email Properties to their input values. Calling methods.
+        //Also being called saves all the existing instances of objects in an appropr json file.
         public void Save_standard_email()
         {
             
@@ -304,6 +363,7 @@ namespace ELM_SET09102
                         em.P_email = (window as MainWindow).txtBox_sender_email.Text;
                         em.Subj = (window as MainWindow).txtBox_subj.Text;
                         em.Email_body = (window as MainWindow).txtBox_body.Text;
+                       
                         (window as MainWindow).btn_send_email.Visibility = Visibility.Hidden;
                     }
                     catch (Exception ex)
@@ -312,16 +372,31 @@ namespace ELM_SET09102
                     }
                 }
             }
-            
-            
-
-            //        string[] a = s.Select(c => c.ToString()).ToArray();
-            Replace_s_email();  
-        }
-
-        public void Save_sir()
+            void WriteToJsonFile<T>(string filePath, T objectToWrite, bool append = false) where T : new()
         {
             
+            TextWriter writer = null;
+            try
+            {
+                var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite);
+                writer = new StreamWriter(filePath, append);
+                writer.Write(contentsToWriteToFile);
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+            }
+        }
+            WriteToJsonFile(@"G:\write_email.json", em);
+            WriteToJsonFile(@"G:\write_sms.json", sms);
+            WriteToJsonFile(@"G:\write_twit.json", twit);
+             Save_sir();
+            Replace_s_email();  
+        }
+        //Assigning SIR Properties to their input values. Calling methods.
+        public void Save_sir()
+        {     
             foreach (Window window in Application.Current.Windows)
             {
                 if (window.GetType() == typeof(MainWindow))
@@ -339,9 +414,9 @@ namespace ELM_SET09102
                     }
                 }
             }
-        }
-    }
-}
-    
+        } // end Save Sir
+    } //End Container Class
+} //End namespace
 
-    
+
+

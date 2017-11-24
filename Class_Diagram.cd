@@ -1,24 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ELM_SET09102.Email">
-    <Position X="1.5" Y="4" Width="1.5" />
+    <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACQAAAAAAAAQAAIAAAACAAAAgICAAICAgAAAAAAkAA=</HashCode>
       <FileName>Email.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ELM_SET09102.SMS">
-    <Position X="6" Y="4" Width="1.5" />
+    <Position X="8" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAIgAAAAAAAAAAQAAAAQAIAAAACAAAAAAAAEAA=</HashCode>
       <FileName>SMS.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ELM_SET09102.Twitter">
-    <Position X="10.75" Y="4" Width="1.5" />
+    <Position X="8" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACQAIEAgACBAAAAAAAAAA=</HashCode>
       <FileName>Twitter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ELM_SET09102.Container">
+    <Position X="2.25" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>JoAQCAAAAiAEAADBABAAJABABABAAAAAAEAQAIAAGBA=</HashCode>
+      <FileName>Container.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

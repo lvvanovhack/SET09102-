@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ELM_SET09102"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="900">
+        Title="MainWindow" Height="628.255" Width="934.068">
     <Grid Margin="0,0,0,-31" Height="350" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="71*"/>
@@ -69,6 +69,9 @@
         <Button x:Name="btn_twit_clear" Content="Clear Twit" HorizontalAlignment="Left" Height="28" Margin="526,421,0,-99" VerticalAlignment="Top" Width="82" Grid.Column="2" Click="btn_twit_clear_Click" Visibility="Hidden"/>
         <Button x:Name="btn_sir_clear" Content="Clear sir" HorizontalAlignment="Left" Height="23" Margin="64,454,0,-127" VerticalAlignment="Top" Width="83" Grid.Column="1" Click="btn_sir_clear_Click" Grid.ColumnSpan="2" Visibility="Hidden"/>
         <Button x:Name="btn_exit" Content="Send" Grid.Column="2" HorizontalAlignment="Left" Margin="636,421,0,-108" VerticalAlignment="Top" Width="82" Click="btn_exit_Click" Height="37" RenderTransformOrigin="0.497,1.04"/>
+        <TextBox x:Name="box_first" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="54" Margin="72,520,0,-224" TextWrapping="Wrap" VerticalAlignment="Top" Width="176"/>
+        <TextBox x:Name="box_sec" HorizontalAlignment="Left" Height="54" Margin="158,520,0,-224" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Grid.Column="2"/>
+        <TextBox x:Name="box_third" HorizontalAlignment="Left" Height="54" Margin="439,536,0,-240" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Grid.Column="2"/>
 
     </Grid>
 </Window>
