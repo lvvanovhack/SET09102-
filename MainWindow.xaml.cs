@@ -55,7 +55,7 @@ namespace ELM_SET09102
             cnt.Show_sms();  
         }
         //Saves input details of Twitter object
-        private void btn_twitter_Click(object sender, RoutedEventArgs e)
+        private void btn_twit_send_Click(object sender, RoutedEventArgs e)
         {
             cnt.Show_twit();    
         }

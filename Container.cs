@@ -242,7 +242,7 @@ namespace ELM_SET09102
             {
                 if (window.GetType() == typeof(MainWindow))
                 {
-                    (window as MainWindow).cbox_incident.Visibility = Visibility.Hidden;
+                    (window as MainWindow).cbox_email.Visibility = Visibility.Hidden;
                     (window as MainWindow).date_sir.Visibility = Visibility.Hidden;
                     (window as MainWindow).lbl_sc_code.Visibility = Visibility.Hidden;
                     (window as MainWindow).lbl_sir.Visibility = Visibility.Hidden;

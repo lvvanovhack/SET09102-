@@ -99,11 +99,6 @@ namespace ELM_SET09102
                 sir_code = value;
             }
         }
- 
     }
-
-        
-
-
 } 
 
